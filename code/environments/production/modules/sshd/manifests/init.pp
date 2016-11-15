@@ -1,4 +1,4 @@
-class httpd inherits httpd::param {
+class sshd inherits sshd::param {
 	
 
 	package { $pack_name:
