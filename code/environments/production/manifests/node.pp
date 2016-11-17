@@ -20,9 +20,8 @@ class myclass {
 #	include httpd::test
 #}
 
-node 'ip-172-31-3-247.ec2.internal', 'ip-172-31-52-249.ec2.internal' {
-	include httpd
-	include httpd::config
+node 'ip-172-31-58-72.ec2.internal', 'ip-172-31-3-247.ec2.internal', 'ip-172-31-52-249.ec2.internal' {
+	include hierademo
 }
 
 #node 'ip-172-31-52-249.ec2.internal' {
