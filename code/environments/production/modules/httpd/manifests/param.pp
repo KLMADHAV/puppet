@@ -4,7 +4,7 @@ class httpd::param {
                         $pack_name = 'httpd'
                         $serv_name = 'httpd'
                         $conf_file = '/etc/httpd/conf/httpd.conf'
-                        $sou_file = "template('httpd/httpd.erb')"
+                        $sou_file = template('httpd/httpd.erb')
                         }
                 'Debian': {
                         $pack_name = 'apache2'

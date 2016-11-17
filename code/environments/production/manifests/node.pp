@@ -13,24 +13,15 @@ class myclass {
 }
 
 
-#node 'ip-172-31-58-72.ec2.internal', 'ip-172-31-52-249.ec2.internal' {
-#	#include myclass
+node 'ip-172-31-58-72.ec2.internal' {
+
+	include profiles::httpd
+#	include base 
+#	include httpd	
+#	include httpd::config
+#	include mariadb
+#	include sshd
+#	include sshd::config
 #	include tomcat
-#	include httpd
-#	include httpd::test
-#}
-
-node 'ip-172-31-58-72.ec2.internal', 'ip-172-31-3-247.ec2.internal', 'ip-172-31-52-249.ec2.internal' {
-	include hierademo
-}
-
-#node 'ip-172-31-52-249.ec2.internal' {
-#	include test
-#}
-
-node 'default' {
-	$packages = ['wget', 'vim', 'httpd', 'bzip2']
-	package { $packages:
-		ensure => installed
-	}
+#
 }
