@@ -46,7 +46,7 @@ So lets create some configuration for this host, So run the following commands o
 
 cd /etc/puppetlabs/code/environments/production/manifests
 vim site.pp
-# Start -----------------------------------
+	# Start -----------------------------------
 class httpd {
 
   package { 'httpd':
@@ -63,7 +63,7 @@ class httpd {
 node 'ip-172-31-54-156.ec2.internal' {
         include httpd
 }
-# End -----------------------------------
+	# End -----------------------------------
 
 Now verify your PP file using the folliowng command.
 
