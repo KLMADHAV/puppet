@@ -1,0 +1,55 @@
+class sample {
+
+	file { '/tmp/passwd1':
+		ensure => 'present',
+  		owner => 'root',
+  		group => 'bin',
+  		mode  => '644'
+	}
+
+	notify { 'Printing OS Info':
+		message => "OS Info = $::osfamily"
+	}
+	notify { 'Server Name':
+		message => "THis Server Name = $servername"
+	}
+}
+
+class demo {
+	notify { 'Some Message':
+		message => 'Some messages'
+	}
+
+}
+
+class webserver {
+
+	service { 'Start Web Server':
+		name => 'apache2',
+		ensure => 'running',
+		require => Package['Install Web Server']
+	}
+	package { 'Install Web Server':
+		name => 'apache2',
+		ensure => 'latest',
+		#before=>Service['Start Web Server']
+		subscribe=>File['/tmp/abc']
+	}
+
+	file { '/tmp/abc':
+		ensure => 'present',
+	}
+
+	#Package['Install Web Server'] -> Service['Start Web Server']
+}
+
+node 'puppetcentos7.c.demo1-156516.internal' {
+	#include sample
+	include webserver
+}
+
+node default {
+	include demo
+	include sample 
+	include webserver
+}

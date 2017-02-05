@@ -1,0 +1,28 @@
+class webserver {
+
+	$message = $::osname ? {
+		'CentOS' => 'This is CentOS Server',
+		'Ubuntu' => 'This is Ubuntu Server',
+		default => 'This is Unknown OS'
+	}
+
+	notify { "$message":
+	}
+
+	package { 'httpd':
+		ensure => installed,
+	}
+
+}
+
+node 'puppetcentos7.c.demo1-156516.internal' {
+        #include sample
+        include webserver
+}
+
+node default {
+#        include demo
+#        include sample
+        include webserver
+}
+
